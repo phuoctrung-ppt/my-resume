@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f0f0f6;
+  @apply min-h-screen overflow-hidden;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#root {
+  height: 100vh;
+}
+@layer components {
+  .bg-image {
+    background-image: url('./assets/triangles-top-2.svg'),
+      url('./assets/triangles-bottom-2.svg');
+    background-position: left top, right bottom;
+    background-repeat: no-repeat;
+  }
+  .nav-bar {
+    @apply flex max-w-[1330px] w-full;
+  }
+  .nav {
+    border-radius: 0 30px 0 0;
+    color: #5f6f81;
+    height: 4.25rem;
+    @apply bg-slate-50 flex items-center justify-center font-medium ml-auto
+      pt-4 pr-10 relative z-10;
+  }
+  .nav::before {
+    background-image: url('./assets/nav-edge.svg');
+  }
+  .nav__item {
+    @apply mr-3;
+    text-transform: uppercase;
+    padding: 0.56rem 1rem;
+    cursor: pointer;
+  }
+
+  .nav__item.active {
+    background-color: #304cfd;
+    border-radius: 10px;
+    color: #fff;
+  }
+  .nav__item.notImplement:hover{
+    cursor:not-allowed;
+  }
+
+  .wrap-border {
+    border-radius: 30px 0 30px 30px;
+  }
+
+  .title::before {
+    @apply w-[3.12rem] absolute bottom-[-1.0625rem] rounded-[0.5rem] h-[0.3125rem] bg-[#304cfd] left-0;
+    content: '';
+  }
+
+  .title::after {
+    @apply w-[1rem] absolute bottom-[-1.0625rem] rounded-[0.5rem] h-[0.3125rem] bg-[#FF965D] left-0;
+    content: '';
+  }
+}
+
+button:hover {
+  transform: scale(1.01);
+}
+button:focus {
+  outline: none !important;
+}
+button:active {
+  transform: scale(0.99);
+}
+
+.check-svg {
+  animation: svgScale 0.5s ease-in-out;
+}
+.download-arrow {
+  transition: transform 0.2s linear;
+}
+button:hover .download-arrow {
+  transform: translate(0, 3px);
+}
+
+@keyframes svgScale {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.download-loader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  opacity: 0;
+  animation: button-loading-spinner 1s ease 3;
+}
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+    opacity: 1;
+  }
+
+  to {
+    transform: rotate(1turn);
+    opacity: 0;
+  }
+}
+.button-copy {
+  padding-top: 2px;
+}
+@media (max-width: 375px) {
+  button.copy-button {
+    min-width: 300px;
+  }
+}
+
+.timeline::before {
+  content: '';
+  background-color: #304cfd;
+  box-shadow: 0 0 0 0.1875rem rgba(48, 76, 253, 0.25);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: -0.3125rem;
+  height: 0.625rem;
+  width: 0.625rem;
+}
